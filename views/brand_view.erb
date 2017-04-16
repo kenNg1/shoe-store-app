@@ -1,0 +1,50 @@
+<link rel='stylesheet' href='/styles.css'>
+
+  <div class="col-md-6">
+    <h3 id="h3_title"><%= @brand.name()%></h3>
+    <img src="<%= @brand.images%>">
+    <% if @brand.stores.any? %>
+    <h5> List of Stores: </h5>
+      <ul>
+        <% @brand.stores.each do |store|%>
+          <form action="/brands_store" method="post">
+            <input type="hidden" name="_method" value="delete">
+            <span id="list"><%= store.name%> </span>
+            <input type="hidden" name="brand_id" value="<%=@brand.id%>">
+            <input type="hidden" name="store_id" value="<%=store.id%>">
+            <button type="submit" class="btn-xs btn-danger">Delete from stores</button>
+          </form>
+        <%end%>
+      </ul>
+    <%end%>
+    <form action="/store" method="post">
+      <input type="hidden" name="brand_id" value="<%=@brand.id%>">
+      <!-- <input type="hidden" name="brand_id" value="<%=@brand.id%>">
+      <input  type='text' name='store'> -->
+      <select name='store_id'>
+        <%@stores.each do |store|%>
+          <option value="<%=store.id%>"><%=store.name%></option>
+        <%end%>
+      </select>
+      <button class="btn-sm" type='submit'>Add Store to Brand</button>
+    </form>
+
+    <h3><%=@average_rating%> <small>(<%=@brand.ratings.length%> reviews)</small></h3>
+
+  </div>
+  <div class="col-md-6">
+    <h4>Reviews</h4>
+    <ul>
+      <% @brand.ratings.each do |rating|%>
+        <li><b><%=rating.name%></b> <%=rating.score%></li>
+      <%end%>
+    </ul>
+    <form action="/rating" method="post">
+      <input type="hidden" name="brand_id" value="<%=@brand.id%>">
+      <input  type='number' name='rating'>
+      <input  type='text' name='user_name'>
+      <button class="btn" type='submit'>Add Rating</button>
+    </form>
+  </div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

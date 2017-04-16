@@ -1,0 +1,12 @@
+<link rel='stylesheet' href='/styles.css'>
+
+  <div class="col-md-6">
+    <% if @stores.any? %>
+    <h5> List of Stores: </h5>
+      <ul>
+        <% @stores.each do |store|%>
+            <li><span id="list"><a href="/store/<%=store.id%>"><%= store.name%></a></span>
+            <%= store.address%></li>
+        <%end%>
+      </ul>
+    <%end%>

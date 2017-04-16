@@ -1,0 +1,19 @@
+#h3_title {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+img {
+  height: 50px;
+  position: absolute;
+  left: 100px;
+  top: 10px;
+}
+
+form {
+  margin-bottom: 5px;
+}
+
+select {
+  width: 100px;
+}

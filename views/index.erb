@@ -1,0 +1,35 @@
+<div class="container-fluid">
+
+<a href="/?add_new_store=true" class="btn btn-sm">Create a Store</a>
+<%if @add_new_store%>
+  <form action='/store/new' method='post'>
+    <label for='store'>Store</label><br>
+    <input type='text' name='store' id='name'><br>
+    <button type='submit'>Submit</button>
+  </form>
+<%end%>
+
+<h3 class="test">Top Brands</h3>
+<ul>
+  <% @topbrands.each do |brand| %>
+    <li><a href="/brand/<%= brand['id']%>/view"><b><%= brand['name']%></b> <%=(brand['avg']).to_f.round(2)%></a></li>
+  <% end %>
+</ul>
+
+<h3>All Brands</h3>
+<ul>
+  <% @brands.each do |brand| %>
+    <li><b><%= brand.name%><a href="/brand/<%= brand.id%>/view"></b> View this brand</a></li>
+  <% end %>
+</ul>
+
+  <h3>Create Brand</h3>
+  <form action='/brand' method='post'>
+    <label for='name'>Name</label><br>
+    <input type='text' name='name' id='name'><br>
+    <label for='images'>Image</label><br>
+    <input type='text' name='images' id='images'><br><br>
+    <button type='submit'>Submit</button>
+  </form>
+
+</div>
